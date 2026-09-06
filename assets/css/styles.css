@@ -196,7 +196,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border:3px solid var(
 .card:hover .card__media img{transform:scale(1.05)}
 .card__media::after{content:"";position:absolute;inset:0;box-shadow:inset 0 -60px 60px -34px rgba(20,10,13,.85)}
 .card__badge{position:absolute;top:12px;left:12px;z-index:3;padding:5px 11px;border-radius:var(--r);font-size:11px;font-weight:400;letter-spacing:.06em;background:rgba(20,10,13,.5);border:1px solid var(--glass-brd);color:var(--white);backdrop-filter:blur(6px)}
-.card__badge--sale{background:linear-gradient(135deg,var(--rose),var(--rose-deep));border:none;color:#161a10}
+.card__badge--sale{background:linear-gradient(135deg,#b24548,#7e2b2e);border:none;color:#f6e8e3}
 .card__body{padding:var(--s4) var(--s4) var(--s5);display:flex;flex-direction:column;gap:6px}
 .card__name{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--white);margin:0;letter-spacing:.01em}
 .card__desc{font-size:12px;font-weight:300;color:var(--muted);margin:0 0 8px;line-height:1.5;min-height:2.3em}
@@ -268,6 +268,25 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border:3px solid var(
 .footer__col a,.footer__col span{font-size:13.5px;font-weight:300;color:var(--text);transition:color .2s}
 .footer__col a:hover{color:var(--rose-2)}
 .footer__legal{text-align:center;margin:var(--s5) 0 0;font-size:11.5px;color:var(--faint)}
+
+/* ---- filter button + ФИЛЬТРЫ modal ---- */
+.foot-right{display:flex;align-items:center;gap:var(--s4)}
+.fbtn{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:var(--r);border:1px solid var(--hair-2);background:transparent;color:var(--text);font-size:12.5px;font-weight:300;letter-spacing:.02em;transition:.25s}
+.fbtn:hover{border-color:var(--rose);color:var(--white)}
+.modal{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:var(--s5)}
+.modal__backdrop{position:absolute;inset:0;background:rgba(10,4,7,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:fade .3s var(--ease)}
+.modal__panel{position:relative;width:min(440px,100%);max-height:88vh;overflow:auto;padding:var(--s6);border-radius:var(--r);
+  background:linear-gradient(180deg,var(--panel-hi),var(--panel));border:1px solid var(--hair-2);
+  box-shadow:0 40px 100px -40px #000;animation:pop .35s var(--ease)}
+@keyframes fade{from{opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.modal__head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--s5)}
+.modal__head h3{font-family:var(--disp);font-weight:400;font-size:26px;letter-spacing:.06em;color:var(--white);margin:0}
+.modal__x{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--hair);background:transparent;color:var(--text);transition:.25s}
+.modal__x:hover{color:var(--white);border-color:var(--rose)}
+.modal__body{display:flex;flex-direction:column;gap:var(--s4)}
+.modal__body .chips{margin-top:var(--s2)}
+.modal__apply{width:100%;justify-content:center;margin-top:var(--s5)}
 
 /* =============================================================
    MOTION + TOAST

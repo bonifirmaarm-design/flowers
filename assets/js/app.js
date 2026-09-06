@@ -106,6 +106,19 @@
   priceRange.dispatchEvent(new Event("input"));
   document.getElementById("chips").addEventListener("click",(e)=>{const c=e.target.closest("[data-chip]"); if(c) c.remove();});
 
+  /* ---- ФИЛЬТРЫ modal ---- */
+  const fmodal=document.getElementById("filterModal");
+  const openFilters=document.getElementById("openFilters");
+  if(fmodal&&openFilters){
+    openFilters.addEventListener("click",()=>{fmodal.hidden=false;document.body.style.overflow="hidden";});
+    const close=()=>{fmodal.hidden=true;document.body.style.overflow="";};
+    fmodal.querySelectorAll("[data-mclose]").forEach(el=>el.addEventListener("click",close));
+    document.addEventListener("keydown",(e)=>{if(e.key==="Escape"&&!fmodal.hidden) close();});
+    const mr=fmodal.querySelector("[data-mrange]"), mrv=fmodal.querySelector("[data-mrangeval]");
+    if(mr&&mrv){const upd=()=>{mrv.textContent=rub(+mr.value);mr.style.setProperty("--fill",((mr.value-mr.min)/(mr.max-mr.min))*100+"%");};mr.addEventListener("input",upd);upd();}
+    fmodal.querySelectorAll("[data-chip]").forEach(c=>c.addEventListener("click",()=>c.remove()));
+  }
+
   /* ---- switcher pill ---- */
   const pill=document.getElementById("switchPill");
   const items=[...document.querySelectorAll(".switch__item")];
