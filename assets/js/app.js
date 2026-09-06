@@ -65,20 +65,19 @@
     <div class="promo__media"><img src="${img("fff56c4b-6a24-4605-afdd-879026f982c9")}" alt="Пионовидные розы"></div>
   </article>`;
 
-  const giftHTML = `<article class="card card--gift reveal">
-    <span class="gift__mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 9h16v11H4zM3 6.5h18V9H3zM12 6.5V20"/><path d="M12 6.5C10 6.5 8.2 5.4 8.2 4S9.3 2 10.4 2.4 12 4.5 12 6.5zM12 6.5c2 0 3.8-1.1 3.8-2.5S14.7 2 13.6 2.4 12 4.5 12 6.5z"/></svg></span>
-    <div class="gift__copy">
-      <p class="gift__eyebrow">Идеальный подарок</p>
-      <h3>Подарочный сертификат</h3>
-      <p>Любая сумма · срок 12 месяцев · пришлём на email или в фирменном конверте.</p>
-      <a href="#contacts" class="btn btn--rose">Оформить сертификат
+  const bannerHTML = `<article class="card card--banner reveal">
+    <img class="banner__img" src="${img("3433a401-337c-4740-a58d-527e5f22ebda")}" alt="" aria-hidden="true">
+    <div class="banner__copy">
+      <p class="banner__eyebrow">Доставка по Петрозаводску за 2 часа</p>
+      <h3>Букеты, которые говорят за&nbsp;вас</h3>
+      <a href="#builder" class="btn btn--rose">Заказать букет
         <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </article>`;
 
   function render(list){
-    let html=""; list.forEach((p,i)=>{ html+=cardHTML(p); if(i===3) html+=promoHTML; if(i===5) html+=giftHTML; });
-    grid.innerHTML=html; observeReveals();
+    let html=""; list.forEach((p,i)=>{ html+=cardHTML(p); if(i===3) html+=promoHTML; });
+    grid.innerHTML = bannerHTML + html; observeReveals();
   }
   render(PRODUCTS);
 
@@ -112,7 +111,7 @@
         priceRange=document.getElementById("priceRange"), priceVal=document.getElementById("priceVal");
   function apply(){
     const t=fType.value, max=+priceRange.value;
-    const cards=[...grid.querySelectorAll(".card:not(.card--promo):not(.card--gift)")];
+    const cards=[...grid.querySelectorAll(".card:not(.card--promo):not(.card--banner)")];
     cards.forEach(c=>c.classList.toggle("is-hidden",!((t==="all"||c.dataset.type===t)&&(+c.dataset.price<=max))));
     const s=sortSel.value;
     if(s!=="pop"){
