@@ -105,10 +105,10 @@ button{font-family:inherit;cursor:pointer}
 .hero__center{position:relative;z-index:2;text-align:center;padding:0 var(--s5)}
 /* eyebrow sits in the clear band between the nav and the title top */
 /* eyebrow sits centred, directly above the ЦВЕТЫ letters */
-.hero__eyebrow{position:relative;z-index:6;margin:0 0 clamp(30px,6vh,78px);font-size:11.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-2);font-weight:400;text-shadow:0 2px 16px rgba(8,3,6,.9)}
-@media(max-width:640px){.hero__eyebrow{letter-spacing:.24em;font-size:10px;margin-bottom:clamp(18px,4vh,40px)}}
+.hero__eyebrow{position:relative;z-index:6;margin:0 0 clamp(30px,6vh,78px);font-size:11.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-2);font-weight:400;text-shadow:0 2px 16px rgba(8,3,6,.9);text-wrap:balance}
+@media(max-width:640px){.hero__eyebrow{letter-spacing:.2em;font-size:10px;margin-bottom:clamp(18px,4vh,40px);max-width:20em;margin-left:auto;margin-right:auto;line-height:1.9;text-wrap:pretty}}
 .hero__title{margin:0;font-family:var(--disp);font-weight:400;font-size:clamp(100px,24vw,360px);line-height:.82;letter-spacing:.14em;color:#fdf7f3;text-indent:.14em;text-shadow:0 30px 80px rgba(0,0,0,.55)}
-.hero__sub{position:relative;z-index:5;margin:var(--s4) 0 0;font-family:var(--ital);font-style:italic;font-weight:400;font-size:clamp(21px,3.4vw,38px);letter-spacing:.05em;color:#ece3d6;text-shadow:0 2px 22px rgba(8,3,6,.85)}
+.hero__sub{position:relative;z-index:5;margin:var(--s4) 0 0;font-family:var(--ital);font-style:italic;font-weight:400;font-size:clamp(21px,3.4vw,38px);letter-spacing:.05em;color:#ece3d6;text-shadow:0 2px 22px rgba(8,3,6,.85);text-wrap:balance}
 .hero__scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:10px;letter-spacing:.32em;text-transform:uppercase}
 .hero__scroll svg{animation:bob 1.9s var(--ease) infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
