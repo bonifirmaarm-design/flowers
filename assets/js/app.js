@@ -75,16 +75,23 @@
       <div class="rcard__b"><h3 class="rcard__name">${p.name}</h3><p class="rcard__desc">${p.desc}</p><span class="rcard__price">${rub(p.price)}</span></div>
     </article>`).join("");
 
-  /* ---- wishlist + cart ---- */
-  const wish = new Set();
-  const wishCount = document.getElementById("wishCount");
+  /* ---- wishlist + cart state ---- */
+  const byId={}; [...PRODUCTS,...RECOMMEND].forEach(p=>{byId[p.id]=p;});
+  const wish=new Set(); const cart=[]; let drawerMode="wish";
+  const wishCount=document.getElementById("wishCount");
+  const cartCount=document.getElementById("cartCount");
+  function updWish(){wishCount.textContent=wish.size;wishCount.classList.toggle("on",wish.size>0);
+    grid.querySelectorAll(".card").forEach(c=>{const b=c.querySelector("[data-wish]");if(b)b.classList.toggle("on",wish.has(c.dataset.id));});}
+  function updCart(){if(cartCount){cartCount.textContent=cart.length;cartCount.classList.toggle("on",cart.length>0);}}
   grid.addEventListener("click",(e)=>{
     const w=e.target.closest("[data-wish]");
-    if(w){ const id=w.closest(".card").dataset.id; w.classList.toggle("on");
+    if(w){ const id=w.closest(".card").dataset.id;
       if(wish.has(id)) wish.delete(id); else { wish.add(id); toast("Добавлено в избранное"); }
-      wishCount.textContent=wish.size; wishCount.classList.toggle("on",wish.size>0); return; }
+      updWish(); if(drawerMode==="wish"&&!drawer.hidden) renderDrawer(); return; }
     const a=e.target.closest("[data-add]");
-    if(a){ a.animate([{transform:"scale(1)"},{transform:"scale(.82)"},{transform:"scale(1)"}],{duration:260,easing:"cubic-bezier(.22,.61,.36,1)"}); toast("Букет добавлен в корзину"); }
+    if(a){ const id=a.closest(".card").dataset.id; cart.push(id); updCart();
+      a.animate([{transform:"scale(1)"},{transform:"scale(.82)"},{transform:"scale(1)"}],{duration:260,easing:"cubic-bezier(.22,.61,.36,1)"});
+      toast("Букет добавлен в корзину"); if(drawerMode==="cart"&&!drawer.hidden) renderDrawer(); }
   });
 
   /* ---- filters ---- */
@@ -121,6 +128,49 @@
     fmodal.querySelectorAll("[data-chip]").forEach(c=>c.addEventListener("click",()=>c.remove()));
   }
 
+  /* ---- favorites / cart drawer ---- */
+  const drawer=document.getElementById("drawer");
+  const drawerBody=document.getElementById("drawerBody");
+  const drawerTitle=document.getElementById("drawerTitle");
+  const drawerFoot=document.getElementById("drawerFoot");
+  function openDrawer(mode){drawerMode=mode;renderDrawer();drawer.hidden=false;document.body.style.overflow="hidden";}
+  function closeDrawer(){drawer.hidden=true;document.body.style.overflow="";}
+  function rowHTML(id,mode,idx){
+    const p=byId[id]; if(!p) return "";
+    return `<div class="drow"><div class="drow__img"><img src="${img(id)}" alt="${p.name}"></div>
+      <div class="drow__b"><h4>${p.name}</h4><p>${p.desc||""}</p><span class="drow__price">${rub(p.price)}</span></div>
+      <button class="drow__x" data-drem="${mode}" data-id="${id}" ${idx!=null?`data-idx="${idx}"`:""} aria-label="Убрать">&times;</button></div>`;
+  }
+  function renderDrawer(){
+    if(!drawer) return;
+    if(drawerMode==="wish"){
+      drawerTitle.textContent="Избранное";
+      const ids=[...wish];
+      drawerBody.innerHTML = ids.length ? ids.map(id=>rowHTML(id,"wish")).join("")
+        : `<p class="drawer__empty">Пока пусто. Нажмите на цветок на карточке, чтобы сохранить букет.</p>`;
+      drawerFoot.innerHTML="";
+    } else {
+      drawerTitle.textContent="Корзина";
+      drawerBody.innerHTML = cart.length ? cart.map((id,i)=>rowHTML(id,"cart",i)).join("")
+        : `<p class="drawer__empty">Корзина пуста. Добавьте букет из каталога.</p>`;
+      const total=cart.reduce((s,id)=>s+(byId[id]?byId[id].price:0),0);
+      drawerFoot.innerHTML = cart.length ? `<div class="drawer__total"><span>Итого</span><span>${rub(total)}</span></div><button class="btn btn--rose drawer__checkout">Оформить заказ</button>` : "";
+    }
+  }
+  if(drawer){
+    document.querySelectorAll("[data-wishbtn]").forEach(b=>b.addEventListener("click",()=>openDrawer("wish")));
+    document.querySelectorAll("[data-cartbtn]").forEach(b=>b.addEventListener("click",()=>openDrawer("cart")));
+    drawer.querySelectorAll("[data-dclose]").forEach(el=>el.addEventListener("click",closeDrawer));
+    document.addEventListener("keydown",(e)=>{if(e.key==="Escape"&&!drawer.hidden) closeDrawer();});
+    drawerBody.addEventListener("click",(e)=>{
+      const x=e.target.closest("[data-drem]"); if(!x) return;
+      if(x.dataset.drem==="wish"){ wish.delete(x.dataset.id); updWish(); }
+      else { cart.splice(+x.dataset.idx,1); updCart(); }
+      renderDrawer();
+    });
+    drawer.addEventListener("click",(e)=>{ if(e.target.closest(".drawer__checkout")) toast("Спасибо! Это демо — заказ не оформляется."); });
+  }
+
   /* ---- switcher pill ---- */
   const pill=document.getElementById("switchPill");
   const items=[...document.querySelectorAll(".switch__item")];
@@ -139,13 +189,9 @@
   });
   msheet&&msheet.querySelectorAll("[data-mlink]").forEach(a=>a.addEventListener("click",closeMenu));
 
-  /* ---- plate hide on scroll ---- */
-  const plate=document.getElementById("plate"); let lastY=0;
-  window.addEventListener("scroll",()=>{ const y=window.scrollY;
-    plate.classList.toggle("is-scrolled",y>40);
-    if(y>lastY&&y>440){ plate.classList.add("is-hidden"); closeMenu(); } else plate.classList.remove("is-hidden");
-    lastY=y;
-  },{passive:true});
+  /* ---- plate stays visible; solid wine plate once scrolled ---- */
+  const plate=document.getElementById("plate");
+  window.addEventListener("scroll",()=>{ plate.classList.toggle("is-scrolled",window.scrollY>40); },{passive:true});
 
   /* ---- active switch item on scroll ---- */
   const secMap={catalog:items[0],builder:items[1],contacts:items[2]};
