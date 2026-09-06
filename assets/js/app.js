@@ -18,6 +18,7 @@
     { id:"3433a401-337c-4740-a58d-527e5f22ebda", name:"Акварель",       desc:"Пастельный микс с эвкалиптом",       type:"mono",  price:4400, old:5300, sale:"−17%" },
     { id:"fd6091e2-2105-4a82-be9c-a586dceac4b1", name:"Бархат",         desc:"Красные розы в шляпной коробке",     type:"box",   price:5400, old:6900, sale:"−22%" },
     { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухой этюд",     desc:"Пампасная трава и сухоцветы",        type:"dried", price:3200, old:null,  sale:"NEW" },
+    { id:"2f6d1004-28a6-40cf-896a-5a5a3c39d650", name:"Ноктюрн",        desc:"Тёмные пионы, авторская подача",     type:"peony", price:6400, old:null,  sale:null  },
   ];
   const RECOMMEND = [
     { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухоцвет", desc:"Пампасная трава", price:3200 },
@@ -33,6 +34,7 @@
     '<ellipse cx="12" cy="7" rx="2" ry="3.2" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>';
   const cartSVG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h2l1.6 9.4a1.4 1.4 0 0 0 1.4 1.2h7a1.4 1.4 0 0 0 1.4-1.1L20 8H7"/><circle cx="10" cy="19.5" r="1.1"/><circle cx="17" cy="19.5" r="1.1"/></svg>';
 
+  const CAT={roses:"Розы",peony:"Пионы",mono:"Монобукет",dried:"Сухоцветы",box:"В коробке"};
   const grid = document.getElementById("grid");
   function cardHTML(p){
     const sale = p.sale ? `<span class="card__badge ${p.sale==="NEW"?"":"card__badge--sale"}">${p.sale}</span>` : "";
@@ -40,6 +42,7 @@
     return `<article class="card" data-type="${p.type}" data-price="${p.price}" data-id="${p.id}">
       <div class="card__media">${sale}<img src="${img(p.id)}" alt="${p.name}" loading="lazy"></div>
       <div class="card__body">
+        <span class="card__cat">${CAT[p.type]||"Букет"}</span>
         <h3 class="card__name">${p.name}</h3>
         <p class="card__desc">${p.desc}</p>
         <div class="card__row">
