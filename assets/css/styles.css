@@ -408,8 +408,8 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border:3px solid var(
   .filters__foot{flex-direction:column;align-items:stretch;gap:var(--s4)}
   .foot-right{justify-content:space-between}
   .sort{font-size:12px}
-  .spread__col--index{padding:var(--s5) var(--s5) var(--s5) 50px}
-  .spread__vertical{font-size:11px;letter-spacing:.24em;padding:var(--s5) 10px}
+  .spread__col--index{padding:var(--s5) var(--s5) var(--s5) 56px}
+  .spread__vertical{font-size:10.5px;letter-spacing:.22em;padding:var(--s5) 9px;opacity:.82}
   .bleed--catalog{width:170px;right:-40px;top:0}
   .infobar__plate{grid-template-columns:1fr;gap:var(--s4);padding:var(--s5)}
   .bleed--recommend,.bleed--footer,.bleed--spread{display:none}
