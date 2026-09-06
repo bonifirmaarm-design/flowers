@@ -16,6 +16,8 @@
     { id:"e75a1a9b-8039-43cc-ae41-ff6834f931eb", name:"Первый снег",    desc:"Белые пионы, розы, гипсофила",       type:"mono",  price:5200, old:6100, sale:"−15%" },
     { id:"84606be1-a618-4c05-ae73-e56cdce09edd", name:"Лавандовый час", desc:"Лизиантус и сиреневые розы",        type:"roses", price:4900, old:null,  sale:null  },
     { id:"3433a401-337c-4740-a58d-527e5f22ebda", name:"Акварель",       desc:"Пастельный микс с эвкалиптом",       type:"mono",  price:4400, old:5300, sale:"−17%" },
+    { id:"fd6091e2-2105-4a82-be9c-a586dceac4b1", name:"Бархат",         desc:"Красные розы в шляпной коробке",     type:"box",   price:5400, old:6900, sale:"−22%" },
+    { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухой этюд",     desc:"Пампасная трава и сухоцветы",        type:"dried", price:3200, old:null,  sale:"NEW" },
   ];
   const RECOMMEND = [
     { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухоцвет", desc:"Пампасная трава", price:3200 },
