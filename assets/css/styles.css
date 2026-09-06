@@ -3,12 +3,12 @@
    Thin didone display (Prata) · square panels · flowers spilling out
    ============================================================= */
 :root{
-  --bg0:#0b0809; --bg1:#070506;
-  --panel:#121011; --panel-2:#0e0c0d; --panel-hi:#171314;
-  --hair:  rgba(245,235,235,.085);
-  --hair-2:rgba(245,235,235,.17);
+  --bg0:#4c252b; --bg1:#2c1519;   /* muted wine / oxblood — main reference */
+  --panel:#281b1f; --panel-2:#20151a; --panel-hi:#302226;
+  --hair:  rgba(245,232,230,.10);
+  --hair-2:rgba(245,232,230,.2);
 
-  --white:#f6f0ed; --text:#d3c7c8; --muted:#9a8b8e; --faint:#6d6265;
+  --white:#f3e8e3; --text:#dbcac9; --muted:#b0969a; --faint:#8a6d72;
 
   /* sage / eucalyptus green accent (names kept for compatibility) */
   --rose:#a7bd95; --rose-2:#d0e1c2; --rose-deep:#6f8c5d;
@@ -30,7 +30,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--sans);font-weight:300;color:var(--text);
-  background:radial-gradient(125% 90% at 50% -6%, #1a1416 0%, #0c0a0b 42%, var(--bg1) 100%) fixed;
+  background:radial-gradient(125% 90% at 50% -6%, #5c2f36 0%, #45222a 44%, var(--bg1) 100%) fixed;
   -webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -47,12 +47,17 @@ button{font-family:inherit;cursor:pointer}
    ============================================================= */
 .plate{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;
   width:min(var(--maxw),calc(100% - 36px));display:flex;align-items:center;gap:var(--s5);
-  padding:9px 10px 9px 24px;border-radius:100px;
-  background:var(--glass);border:1px solid var(--glass-brd);
-  backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);
-  box-shadow:0 1px 0 var(--glass-hi) inset, 0 20px 50px -22px rgba(0,0,0,.8);
+  padding:9px 10px 9px 24px;border-radius:100px;isolation:isolate;
+  background:linear-gradient(180deg, rgba(255,255,255,.11), rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(30px) saturate(200%);-webkit-backdrop-filter:blur(30px) saturate(200%);
+  box-shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 -1px 0 rgba(255,255,255,.06) inset, 0 10px 30px -8px rgba(0,0,0,.4), 0 24px 60px -26px rgba(0,0,0,.85);
   transition:transform .5s var(--ease),background .4s,box-shadow .4s}
-.plate.is-scrolled{background:var(--glass-2)}
+/* liquid-glass specular sheen */
+.plate::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 160% at 18% -40%, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 42%),
+             linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 46%)}
+.plate.is-scrolled{background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.04))}
 .plate.is-hidden{transform:translate(-50%,-160%)}
 .plate__brand{font-family:var(--disp);font-size:19px;letter-spacing:.36em;color:var(--white);padding-left:2px}
 .switch{position:relative;display:flex;align-items:center;margin:0 auto;padding:3px;border-radius:100px;background:rgba(0,0,0,.28);border:1px solid var(--hair)}
@@ -180,32 +185,32 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border:3px solid var(
 .sort select{appearance:none;background:transparent;border:none;color:var(--white);font-size:12.5px;font-family:inherit;cursor:pointer;border-bottom:1px solid var(--hair);padding:4px 2px}
 .sort select:focus{outline:none;border-color:var(--rose)}
 
-/* ---- product grid — square cards, bouquet spills above & fades into black ---- */
-.grid{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s6) var(--s4)}
-.card{position:relative;display:flex;flex-direction:column;padding:0 var(--s4) var(--s5);
-  background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--hair);border-radius:var(--r);
-  overflow:visible;transition:transform .5s var(--ease),border-color .4s,box-shadow .5s var(--ease)}
-.card:hover{transform:translateY(-6px);border-color:var(--hair-2);box-shadow:0 44px 80px -50px #000}
-.card__media{position:relative;margin:-30px 0 0;height:250px}
-.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);
-  -webkit-mask-image:radial-gradient(94% 86% at 50% 44%, #000 58%, transparent 90%);
-          mask-image:radial-gradient(94% 86% at 50% 44%, #000 58%, transparent 90%)}
-.card:hover .card__media img{transform:scale(1.04)}
-.card__badge{position:absolute;top:36px;left:2px;z-index:3;padding:5px 11px;border-radius:var(--r);font-size:11px;font-weight:400;letter-spacing:.06em;background:rgba(10,7,8,.6);border:1px solid var(--glass-brd);color:var(--white);backdrop-filter:blur(6px)}
+/* ---- product grid — main-reference cards (contained image + price + flower + cart) ---- */
+.grid{position:relative;z-index:3;display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5) var(--s4)}
+.card{position:relative;display:flex;flex-direction:column;overflow:hidden;
+  background:var(--panel);border:1px solid var(--hair);border-radius:var(--r);
+  transition:transform .5s var(--ease),border-color .4s,box-shadow .5s var(--ease)}
+.card:hover{transform:translateY(-5px);border-color:var(--hair-2);box-shadow:0 40px 80px -50px #000}
+.card__media{position:relative;aspect-ratio:3/4;overflow:hidden}
+.card__media img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.card:hover .card__media img{transform:scale(1.05)}
+.card__media::after{content:"";position:absolute;inset:0;box-shadow:inset 0 -60px 60px -34px rgba(20,10,13,.85)}
+.card__badge{position:absolute;top:12px;left:12px;z-index:3;padding:5px 11px;border-radius:var(--r);font-size:11px;font-weight:400;letter-spacing:.06em;background:rgba(20,10,13,.5);border:1px solid var(--glass-brd);color:var(--white);backdrop-filter:blur(6px)}
 .card__badge--sale{background:linear-gradient(135deg,var(--rose),var(--rose-deep));border:none;color:#161a10}
-.card__wish{position:absolute;top:34px;right:2px;z-index:3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(10,7,8,.4);border:1px solid var(--glass-brd);color:var(--text);backdrop-filter:blur(6px);transition:.25s}
-.card__wish:hover{color:var(--rose-2);border-color:var(--rose)}
-.card__wish.on{color:var(--rose);border-color:var(--rose);background:var(--glass-rose)}
-.card__wish.on ellipse{fill:var(--rose)}
-.card__body{display:flex;flex-direction:column;gap:4px;margin-top:8px}
-.card__name{font-family:var(--serif);font-size:23px;font-weight:500;color:var(--white);margin:0;letter-spacing:.01em}
-.card__desc{font-size:12px;font-weight:300;color:var(--muted);margin:0 0 12px;line-height:1.5;min-height:2.3em}
-.card__row{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s3)}
+.card__body{padding:var(--s4) var(--s4) var(--s5);display:flex;flex-direction:column;gap:6px}
+.card__name{font-family:var(--serif);font-size:22px;font-weight:500;color:var(--white);margin:0;letter-spacing:.01em}
+.card__desc{font-size:12px;font-weight:300;color:var(--muted);margin:0 0 8px;line-height:1.5;min-height:2.3em}
+.card__row{display:flex;align-items:center;justify-content:space-between;gap:var(--s3)}
 .card__price{display:flex;flex-direction:column;gap:1px}
 .card__now{font-size:16px;font-weight:400;color:var(--white)}
 .card__old{font-size:12px;color:var(--faint);text-decoration:line-through}
-.card__add{display:grid;place-items:center;width:38px;height:38px;border-radius:var(--r);background:var(--glass-rose);border:1px solid var(--rose);color:var(--rose-2);transition:.25s}
-.card__add:hover{background:var(--rose);color:#161a10;transform:scale(1.05)}
+.card__acts{display:flex;gap:8px}
+.card__icn{display:grid;place-items:center;width:38px;height:38px;border-radius:var(--r);border:1px solid var(--hair);background:transparent;color:var(--text);transition:.25s}
+.card__icn:hover{color:var(--rose-2);border-color:var(--rose)}
+.card__icn.on{color:var(--rose);border-color:var(--rose);background:var(--glass-rose)}
+.card__icn.on ellipse{fill:var(--rose)}
+.card__icn--cart{background:var(--glass-rose);border-color:var(--rose);color:var(--rose-2)}
+.card__icn--cart:hover{background:var(--rose);color:#161a10}
 .card.is-hidden{display:none}
 
 .card--promo{grid-column:span 2;flex-direction:row;align-items:stretch;padding:0;overflow:hidden}

@@ -29,22 +29,23 @@
     '<ellipse cx="12" cy="7" rx="2" ry="3.2"/><ellipse cx="12" cy="7" rx="2" ry="3.2" transform="rotate(72 12 12)"/>'+
     '<ellipse cx="12" cy="7" rx="2" ry="3.2" transform="rotate(144 12 12)"/><ellipse cx="12" cy="7" rx="2" ry="3.2" transform="rotate(216 12 12)"/>'+
     '<ellipse cx="12" cy="7" rx="2" ry="3.2" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="1.7" fill="currentColor" stroke="none"/></svg>';
-  const plusSVG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg>';
+  const cartSVG='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h2l1.6 9.4a1.4 1.4 0 0 0 1.4 1.2h7a1.4 1.4 0 0 0 1.4-1.1L20 8H7"/><circle cx="10" cy="19.5" r="1.1"/><circle cx="17" cy="19.5" r="1.1"/></svg>';
 
   const grid = document.getElementById("grid");
   function cardHTML(p){
     const sale = p.sale ? `<span class="card__badge ${p.sale==="NEW"?"":"card__badge--sale"}">${p.sale}</span>` : "";
     const old = p.old ? `<span class="card__old">${rub(p.old)}</span>` : "";
     return `<article class="card" data-type="${p.type}" data-price="${p.price}" data-id="${p.id}">
-      <div class="card__media"><img src="${img(p.id)}" alt="${p.name}" loading="lazy"></div>
-      ${sale}
-      <button class="card__wish" aria-label="В избранное" data-wish>${flowerSVG}</button>
+      <div class="card__media">${sale}<img src="${img(p.id)}" alt="${p.name}" loading="lazy"></div>
       <div class="card__body">
         <h3 class="card__name">${p.name}</h3>
         <p class="card__desc">${p.desc}</p>
         <div class="card__row">
           <span class="card__price"><span class="card__now">${rub(p.price)}</span>${old}</span>
-          <button class="card__add" aria-label="В корзину" data-add>${plusSVG}</button>
+          <div class="card__acts">
+            <button class="card__icn" aria-label="В избранное" data-wish>${flowerSVG}</button>
+            <button class="card__icn card__icn--cart" aria-label="В корзину" data-add>${cartSVG}</button>
+          </div>
         </div>
       </div>
     </article>`;
