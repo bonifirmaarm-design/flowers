@@ -18,7 +18,6 @@
     { id:"3433a401-337c-4740-a58d-527e5f22ebda", name:"Акварель",       desc:"Пастельный микс с эвкалиптом",       type:"mono",  price:4400, old:5300, sale:"−17%" },
     { id:"fd6091e2-2105-4a82-be9c-a586dceac4b1", name:"Бархат",         desc:"Красные розы в шляпной коробке",     type:"box",   price:5400, old:6900, sale:"−22%" },
     { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухой этюд",     desc:"Пампасная трава и сухоцветы",        type:"dried", price:3200, old:null,  sale:"NEW" },
-    { id:"2f6d1004-28a6-40cf-896a-5a5a3c39d650", name:"Ноктюрн",        desc:"Тёмные пионы, авторская подача",     type:"peony", price:6400, old:null,  sale:null  },
   ];
   const RECOMMEND = [
     { id:"e235fdad-2a22-4b86-bfa0-8d98cfa25051", name:"Сухоцвет", desc:"Пампасная трава", price:3200 },
