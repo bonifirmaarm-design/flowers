@@ -1,0 +1,4 @@
+# Third-party design-skill clones (reference only, not vendored)
+design-skills/
+node_modules/
+.DS_Store

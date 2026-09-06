@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ЦВЕТЫ — которых достойна каждая</title>
+  <meta name="description" content="Бутик авторских букетов. Каталог, доставка и сборка индивидуальных композиций. Петрозаводск." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- ============ ATMOSPHERE ============ -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ============ FLOATING GLASS NAV (liquid glass, moved to top) ============ -->
+  <header class="nav" id="nav">
+    <div class="nav__glass">
+      <a class="nav__brand" href="#top" aria-label="ЦВЕТЫ — на главную">
+        <span class="nav__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 12c0-3 1.6-5 3.4-5S18 8.2 18 10c0 2.4-2.6 4-6 4M12 12c0-3-1.6-5-3.4-5S6 8.2 6 10c0 2.4 2.6 4 6 4M12 12c-1.8 0-3.4 2-3.4 4.6S10.4 21 12 21M12 12c1.8 0 3.4 2 3.4 4.6S13.6 21 12 21"/>
+            <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+        <span class="nav__word">ЦВЕТЫ</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Основная навигация">
+        <a href="#catalog" class="nav__link is-active">Каталог</a>
+        <a href="#builder" class="nav__link">Собрать свой букет</a>
+        <a href="#story" class="nav__link">О нас</a>
+        <a href="#contacts" class="nav__link">Контакты</a>
+      </nav>
+
+      <div class="nav__actions">
+        <button class="icon-btn" aria-label="Поиск" data-title="Поиск">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        </button>
+        <button class="icon-btn" aria-label="Избранное" data-title="Избранное">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20s-7-4.4-9.2-8.4C1.3 8.7 2.6 5.5 5.6 5c2-.3 3.6.8 4.4 2.2C10.8 5.8 12.4 4.7 14.4 5c3 .5 4.3 3.7 2.8 6.6C19 15.6 12 20 12 20z"/></svg>
+          <span class="icon-btn__count" id="wishCount">0</span>
+        </button>
+        <button class="icon-btn icon-btn--cart" aria-label="Корзина" data-title="Корзина">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h2l1.6 10.2a1.5 1.5 0 0 0 1.5 1.3h7.6a1.5 1.5 0 0 0 1.5-1.2L20.5 9H7"/><circle cx="10" cy="20.5" r="1"/><circle cx="18" cy="20.5" r="1"/></svg>
+        </button>
+        <button class="nav__burger" id="burger" aria-label="Меню" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__vignette" aria-hidden="true"></div>
+
+    <div class="hero__stage">
+      <p class="hero__eyebrow">Бутик авторских букетов · Петрозаводск</p>
+
+      <div class="hero__title-wrap">
+        <!-- flowers layered behind the letters -->
+        <img class="hero__flower hero__flower--back" src="https://gen.krea.ai/images/fff56c4b-6a24-4605-afdd-879026f982c9.png" alt="" aria-hidden="true" data-depth="0.02" />
+        <h1 class="hero__title" data-text="ЦВЕТЫ">ЦВЕТЫ</h1>
+        <!-- flowers layered in front of the letters -->
+        <img class="hero__flower hero__flower--frontL" src="https://gen.krea.ai/images/f640b4e1-c106-44fa-85e2-88e51005c940.png" alt="" aria-hidden="true" data-depth="0.06" />
+        <img class="hero__flower hero__flower--frontR" src="https://gen.krea.ai/images/f640b4e1-c106-44fa-85e2-88e51005c940.png" alt="" aria-hidden="true" data-depth="0.05" />
+      </div>
+
+      <p class="hero__subtitle">которых достойна каждая</p>
+    </div>
+
+    <a href="#story" class="hero__scroll" aria-label="Листать вниз">
+      <span>листайте</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4v16M6 14l6 6 6-6"/></svg>
+    </a>
+  </section>
+
+  <!-- ============ EDITORIAL SPREAD (01 / 02) ============ -->
+  <section class="spread" id="story">
+    <div class="spread__frame reveal">
+      <span class="spread__vertical" aria-hidden="true">КАТАЛОГ — БУКЕТОВ</span>
+
+      <div class="spread__col spread__col--index">
+        <span class="spread__num">01</span>
+        <p class="spread__lead">Каждый букет мы собираем вручную из свежесрезанных цветов — с уважением к сезону, форме и характеру каждого повода.</p>
+        <ul class="spread__list">
+          <li>Пионы</li>
+          <li>Лилии садовые</li>
+          <li>Ранункулюс</li>
+          <li>Гвоздика</li>
+          <li>Тюльпаны</li>
+          <li>Розы</li>
+        </ul>
+      </div>
+
+      <div class="spread__col spread__col--a">
+        <img src="https://gen.krea.ai/images/783147c0-031e-4749-acb3-88283441688b.png" alt="Букет садовых роз в пыльно-розовой упаковке" loading="lazy" />
+      </div>
+
+      <div class="spread__col spread__col--b">
+        <span class="spread__num spread__num--muted">02</span>
+        <span class="spread__cap">Пионы<br><em>сезон и настроение</em></span>
+        <img src="https://gen.krea.ai/images/fff56c4b-6a24-4605-afdd-879026f982c9.png" alt="Пионовидные розы крупным планом" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATALOG ============ -->
+  <section class="catalog" id="catalog">
+    <!-- a real flower emerging over the layout edge -->
+    <img class="catalog__bleed" src="https://gen.krea.ai/images/f640b4e1-c106-44fa-85e2-88e51005c940.png" alt="" aria-hidden="true" />
+
+    <div class="catalog__head reveal">
+      <nav class="crumbs" aria-label="Хлебные крошки"><a href="#top">Главная</a><span>/</span><span>Каталог букетов</span></nav>
+      <h2 class="catalog__title">Каталог букетов</h2>
+    </div>
+
+    <!-- filter bar -->
+    <div class="filters reveal" role="region" aria-label="Фильтры">
+      <div class="filters__row">
+        <label class="field">
+          <span class="field__label">Тип</span>
+          <select class="field__select" id="fType">
+            <option value="all">Все</option>
+            <option value="roses">Розы</option>
+            <option value="peony">Пионы</option>
+            <option value="mono">Моно</option>
+            <option value="dried">Сухоцветы</option>
+            <option value="box">В коробке</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">Повод</span>
+          <select class="field__select">
+            <option>Выберите</option><option>День рождения</option><option>Свадьба</option><option>Без повода</option><option>8 марта</option>
+          </select>
+        </label>
+        <label class="field">
+          <span class="field__label">Цвет</span>
+          <select class="field__select">
+            <option>Выбраны 2 варианта</option><option>Розовый</option><option>Красный</option><option>Белый</option><option>Пастель</option>
+          </select>
+        </label>
+        <label class="field field--range">
+          <span class="field__label">Стоимость</span>
+          <div class="range">
+            <input type="range" id="priceRange" min="1600" max="8600" step="100" value="6600" />
+            <div class="range__meta"><span>1 600 ₽</span><span id="priceVal">6 600 ₽</span></div>
+          </div>
+        </label>
+        <label class="field">
+          <span class="field__label">Цветовая гамма</span>
+          <select class="field__select">
+            <option>Выберите</option><option>Тёплая</option><option>Холодная</option><option>Монохром</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filters__foot">
+        <div class="chips" id="chips">
+          <button class="chip" data-chip>Розы <i>×</i></button>
+          <button class="chip" data-chip>Пионовидные розы <i>×</i></button>
+        </div>
+        <label class="sort">
+          <span>Сортировать</span>
+          <select id="sortSel">
+            <option value="pop">по популярности</option>
+            <option value="asc">сначала дешевле</option>
+            <option value="desc">сначала дороже</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <!-- product grid -->
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- ============ BUILDER CTA ============ -->
+  <section class="builder" id="builder">
+    <div class="builder__panel reveal">
+      <div class="builder__copy">
+        <p class="builder__eyebrow">Индивидуально</p>
+        <h3 class="builder__title">Соберём букет<br>по вашему настроению</h3>
+        <p class="builder__text">Расскажите о поводе, палитре и бюджете — флорист предложит композицию и пришлёт фото до отправки.</p>
+        <a href="#contacts" class="btn btn--rose">Собрать свой букет
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="builder__media">
+        <img src="https://gen.krea.ai/images/78aefb8a-8ce7-4fef-a822-bfb1e405e605.png" alt="Белая композиция из роз и эвкалипта на винтажном стуле" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contacts">
+    <div class="footer__glass reveal">
+      <div class="footer__brand">
+        <span class="footer__word">ЦВЕТЫ</span>
+        <p class="footer__tag">которых достойна каждая</p>
+      </div>
+      <div class="footer__cols">
+        <div class="footer__col">
+          <h4>Каталог</h4>
+          <a href="#catalog">Букеты</a><a href="#catalog">Пионы</a><a href="#catalog">Розы</a><a href="#catalog">Сухоцветы</a>
+        </div>
+        <div class="footer__col">
+          <h4>Компания</h4>
+          <a href="#story">О нас</a><a href="#builder">Собрать букет</a><a href="#catalog">Доставка</a>
+        </div>
+        <div class="footer__col">
+          <h4>Контакты</h4>
+          <a href="tel:+79210000000">+7 (921) 000‑00‑00</a>
+          <a href="mailto:hello@cvety.ru">hello@cvety.ru</a>
+          <span>Петрозаводск, пр. Ленина, 1</span>
+          <span>ежедневно 9:00 — 21:00</span>
+        </div>
+      </div>
+    </div>
+    <p class="footer__legal">© 2026 ЦВЕТЫ · Демонстрационный проект. Все изображения сгенерированы.</p>
+  </footer>
+
+  <!-- lightweight toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
