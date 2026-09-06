@@ -104,8 +104,9 @@ button{font-family:inherit;cursor:pointer}
   linear-gradient(180deg, rgba(5,3,5,.55) 0%, transparent 26%, transparent 60%, var(--bg1) 100%)}
 .hero__center{position:relative;z-index:2;text-align:center;padding:0 var(--s5)}
 /* eyebrow sits in the clear band between the nav and the title top */
-.hero__eyebrow{position:absolute;left:50%;top:clamp(84px,10vh,120px);transform:translateX(-50%);z-index:6;width:100%;margin:0;padding:0 var(--s6);font-size:11.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-2);font-weight:400;text-shadow:0 2px 16px rgba(8,3,6,.9)}
-@media(max-width:640px){.hero__eyebrow{letter-spacing:.26em;font-size:10px;top:clamp(74px,10vh,104px)}}
+/* eyebrow sits centred, directly above the ЦВЕТЫ letters */
+.hero__eyebrow{position:relative;z-index:6;margin:0 0 clamp(30px,6vh,78px);font-size:11.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--rose-2);font-weight:400;text-shadow:0 2px 16px rgba(8,3,6,.9)}
+@media(max-width:640px){.hero__eyebrow{letter-spacing:.24em;font-size:10px;margin-bottom:clamp(18px,4vh,40px)}}
 .hero__title{margin:0;font-family:var(--disp);font-weight:400;font-size:clamp(100px,24vw,360px);line-height:.82;letter-spacing:.14em;color:#fdf7f3;text-indent:.14em;text-shadow:0 30px 80px rgba(0,0,0,.55)}
 .hero__sub{position:relative;z-index:5;margin:var(--s4) 0 0;font-family:var(--ital);font-style:italic;font-weight:400;font-size:clamp(21px,3.4vw,38px);letter-spacing:.05em;color:#ece3d6;text-shadow:0 2px 22px rgba(8,3,6,.85)}
 .hero__scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:7px;color:var(--muted);font-size:10px;letter-spacing:.32em;text-transform:uppercase}
